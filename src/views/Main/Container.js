@@ -50,7 +50,7 @@ export class Container extends React.Component {
           <Header />
           <Sidebar
             title={'Restaurants'}
-            places={this.state.props}
+            places={this.state.places}
             />
         </Map>
       </div>

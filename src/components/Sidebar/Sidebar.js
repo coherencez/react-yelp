@@ -5,8 +5,6 @@ import Listing from 'components/Listing/Listing'
 
 export class Sidebar extends React.Component {
   render() {
-    console.log('HELLO STATE:', this.props);
-
     return (
       <div className={styles.sidebar}>
         <div className={styles.heading}>

@@ -11,3 +11,18 @@ export const searchNearby = (google, map, request) => {
     })
   })
 }
+
+export const getDetails = (google, map, placeId) => {
+  return new Promise((reject, resolve) => {
+    const service = new google.maps.places.PlacesService(map)
+    const request = {placeId}
+
+    service.getDetails(request, (place, status) => {
+      if(status !== google.maps.places.PlacesServiceStatus.OK) {
+        return reject(status)
+      } else {
+        resolve(place)
+      }
+    })
+  })
+}

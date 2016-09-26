@@ -23,6 +23,14 @@ const config = getConfig({
   clearBeforeBuild: true
 })
 
+config.resolve.root = [src,modules]
+config.resolve.alias = {
+  'css': join(src,'styles'),
+  'containers': join(src,'containers'),
+  'components': join(src, 'components'),
+  'utils': join(src,'utils')
+}
+
 config.postcss = [].concat([
   require('precss')({}),
   require('autoprefixer')({}),

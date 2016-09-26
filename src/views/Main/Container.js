@@ -40,7 +40,8 @@ export class Container extends React.Component {
   }
   onMarkerClick(item) {
     const {place} = item //place prop
-
+    const {push} = this.context.router
+    push(`/map/detail/${place.place_id}`)
   }
   render() {
     let children = null;
@@ -74,6 +75,10 @@ export class Container extends React.Component {
       </div>
     )
   }
+}
+
+Container.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default GoogleApiWrapper({

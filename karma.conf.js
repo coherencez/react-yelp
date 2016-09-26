@@ -1,3 +1,4 @@
+const path = require('path')
 const webpackConfig = require('./webpack.config')
 // Karma configuration
 // Generated on Sun Sep 25 2016 20:14:21 GMT-0500 (CDT)
@@ -21,11 +22,12 @@ module.exports = function(config) {
       'karma-chai',
       'karma-webpack',
       'karma-phantomjs-launcher',
-      'karma-spec-reporter'
+      'karma-spec-reporter',
+      'karma-sourcemap-loader'
     ],
     // list of files / patterns to load in the browser
     files: [
-      'tests.webpck.js'
+      'tests.webpack.js'
     ],
 
 
@@ -44,7 +46,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['karma-spec-reporter'],
+    reporters: ['spec'],
 
 
     // web server port

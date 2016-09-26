@@ -23,6 +23,12 @@ const config = getConfig({
   clearBeforeBuild: true
 })
 
+config.externals = {
+  'react/lib/ReactContext': true,
+  'react/lib/ExecutionEnvironment': true,
+  'react/addons': true
+}
+
 config.resolve.root = [src,modules]
 config.resolve.alias = {
   'css': join(src,'styles'),

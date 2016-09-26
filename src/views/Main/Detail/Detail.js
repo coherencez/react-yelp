@@ -47,10 +47,22 @@ export class Detail extends React.Component {
     })
   }
   render() {
-    return (
-      <div className={styles.details}></div>
-    )
-  }
+    if (this.state.loading) {
+     return (<div className={styles.wrapper}>
+               Loading...
+             </div>
+        )
+     }
+     // We're no longer loading when we get here
+     const {place} = this.state;
+     return (
+       <div className={styles.wrapper}>
+         <div className={styles.header}>
+           <h2>{place.name}</h2>
+         </div>
+       </div>
+     )
+   }
 }
 
 export default Detail

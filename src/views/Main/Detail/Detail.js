@@ -17,6 +17,13 @@ export class Detail extends React.Component {
       this.getDetails(this.props.map)
     }
   }
+  componentDidUpdate(prevProps) {
+    if(this.props.map &&
+      (prevProps.map !== this.props.map ||
+      prevProps.params.placeId !== this.props.params.placeId)) {
+        this.getDetails(this.props.map)
+      }
+  }
   getDetails(map) {
     // the placeId comes from the URL, pssed into
     // this compoent through params

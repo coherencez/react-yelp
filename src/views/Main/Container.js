@@ -52,7 +52,6 @@ export class Container extends React.Component {
   }
 }
 
-console.log(process)
 export default GoogleApiWrapper({
-  apiKey: process.env.__GAPI_KEY__
+  apiKey: __GAPI_KEY__
 })(Container)

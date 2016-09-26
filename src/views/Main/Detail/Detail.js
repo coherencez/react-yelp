@@ -14,21 +14,22 @@ export class Detail extends React.Component {
   }
   componentDidMount() {
     if(this.props.map) {
-      this.getDetails(this.props.map)
+      this.getDetailsInfo(this.props.map)
     }
   }
   componentDidUpdate(prevProps) {
     if(this.props.map &&
       (prevProps.map !== this.props.map ||
       prevProps.params.placeId !== this.props.params.placeId)) {
-        this.getDetails(this.props.map)
+        this.getDetailsInfo(this.props.map)
       }
   }
-  getDetails(map) {
+  getDetailsInfo(map) {
     // the placeId comes from the URL, pssed into
     // this compoent through params
     const {google, params} = this.props
     const {placeId} = params
+    console.log('DETAILS STATE:', this.state)
 
     // set the loading state
     this.setState({loading: true}, () => {
@@ -46,12 +47,14 @@ export class Detail extends React.Component {
         })
     })
   }
+  renderPhotos() {
+    
+  }
   render() {
     if (this.state.loading) {
      return (<div className={styles.wrapper}>
                Loading...
-             </div>
-        )
+             </div>)
      }
      // We're no longer loading when we get here
      const {place} = this.state;
@@ -59,6 +62,9 @@ export class Detail extends React.Component {
        <div className={styles.wrapper}>
          <div className={styles.header}>
            <h2>{place.name}</h2>
+         </div>
+         <div className={styles.details}>
+          {this.renderPhotos(place)}
          </div>
        </div>
      )

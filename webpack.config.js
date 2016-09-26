@@ -12,6 +12,8 @@ const modules = join(root, 'node_modules')
 const dest = join(root, 'dist')
 
 const NODE_ENV = process.env.NODE_ENV
+const dotenv = require('dotenv')
+
 const isDev = NODE_ENV === 'development'
 
 const config = getConfig({
@@ -55,5 +57,13 @@ config.module.loaders.push({
   include: [modules],
   loader: 'style!css'
 })
+
+const dotEnvVars = dotenv.config()
+const environmentEnv = dotenv.config({
+  path: join(root, 'config', `${NODE_ENV}.config.js`),
+  silent: true,
+})
+const envVariables =
+  Object.assign({}, dotEnvVars, environmentEnv)
 
 module.exports = config

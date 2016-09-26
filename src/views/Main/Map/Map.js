@@ -11,14 +11,19 @@ export class MapComponent extends React.Component {
       return <Marker key={place.id}
                 name={place.id}
                 place={place}
+                onClick={this.props.onMarkerClick.bind(this)}
                 position={place.geometry.location} />
     })
+  }
+  renderChilden() {
+    const {children} = this.props
+    return this.renderMarkers()
   }
   render() {
     return (
       <Map google={this.props.google}
             className={styles.map}>
-            {this.renderMarkers()}
+            {this.renderChilden()}
       </Map>
     )
   }

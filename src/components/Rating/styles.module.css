@@ -1,3 +1,5 @@
+@import "../../styles/colors.css";
+
 .sprite {
   unicode-bidi: bidi-override;
   color: #404040;

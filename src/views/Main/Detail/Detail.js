@@ -12,8 +12,32 @@ export class Detail extends React.Component {
       location: {}
     }
   }
+  componentDidMount() {
+    if(this.props.map) {
+      this.getDetails(this.props.map)
+    }
+  }
   getDetails(map) {
+    // the placeId comes from the URL, pssed into
+    // this compoent through params
+    const {google, params} = this.props
+    const {placeId} = params
 
+    // set the loading state
+    this.setState({loading: true}, () => {
+      getDetails(google, map, placeId)
+        .then(place => {
+          const {location} = place.geometry
+          const loc = {
+            lat: location.lat(),
+            lng: location.lng()
+          }
+
+          this.setState({
+            place, location: loc, loading: false
+          })
+        })
+    })
   }
   render() {
     return (

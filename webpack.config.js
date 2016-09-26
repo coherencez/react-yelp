@@ -16,6 +16,13 @@ const isDev = NODE_ENV === 'development'
 const isTest = NODE_ENV === 'test'
 const dotenv = require('dotenv')
 
+const config = getConfig({
+  isDev: isDev,
+  in: join(src, 'app.js'),
+  out: dest,
+  clearBeforeBuild: true
+})
+
 const dotEnvVars = dotenv.config()
 const environmentEnv = dotenv.config({
   path: join(root, 'config', `${NODE_ENV}.config.js`),
@@ -39,12 +46,6 @@ config.plugins = [
 ].concat(config.plugins)
 
 
-const config = getConfig({
-  isDev: isDev,
-  in: join(src, 'app.js'),
-  out: dest,
-  clearBeforeBuild: true
-})
 
 if(isTest) {
   config.externals = {

@@ -5,7 +5,9 @@ import Container from './Container'
 export const makeMainRoutes = () => {
 
   return (
-    <Route path="/" component={Container} />
+    <Route path="/" component={Container}>
+      <Route path="map" component={Map} />
+    </Route>
   )
 }
 
